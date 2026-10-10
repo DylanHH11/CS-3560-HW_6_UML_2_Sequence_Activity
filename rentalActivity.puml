@@ -1,13 +1,20 @@
 @startuml
+
 |Renter|
 start
 :Choose facility and date;
-|#AntiqueWhite|Website|
-:foo2;
-:foo3;
-|Renter|
-:foo4;
-|Payment|
-:foo5;
-stop
+
+|Website|
+:Check availability;
+
+|School Staff|
+:Check availability;
+
+|Payment Service|
+:Check availability;
+
+|Email Service|
+:Check availability;
+
+
 @enduml
