@@ -1,13 +1,13 @@
 @startuml
-|Swimlane1|
+|Renter|
 start
-:foo1;
-|#AntiqueWhite|Swimlane2|
+:Choose facility and date;
+|#AntiqueWhite|Website|
 :foo2;
 :foo3;
-|Swimlane1|
+|Renter|
 :foo4;
-|Swimlane2|
+|Payment|
 :foo5;
 stop
 @enduml
