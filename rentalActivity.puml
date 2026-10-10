@@ -8,8 +8,18 @@ start
 :Check availability;
 
 if (Facility available?) then ([available])
+       |Renter|
+       :Enter contact information;
+       :Submit request;
 
-else ([unavailable])
+       |Website|
+       :Record request;
+       :Send request for review;
+
+       |School Staff|
+       :Review request;
+
+else ([not available])
         :Show not available;
         |Renter|
         if (Try another date?) then ([choose another date])
