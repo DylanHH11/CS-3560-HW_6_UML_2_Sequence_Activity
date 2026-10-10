@@ -6,19 +6,26 @@ start
 
 |Website|
 :Check availability;
-
-if (Facility available?) then ([available])
+if (available?) then (yes)
        |Renter|
        :Enter contact information;
        :Submit request;
 
-       |Website|
-       :Record request;
-       :Send request for review;
-
        |School Staff|
        :Review request;
 
+        if(Accept request?) then ([approved])
+            |Payment Service|
+            :Process Payment;
+            if (Payment Successful?) then ([payment succeeds])
+                        :Save booking;
+                        |Email Service|
+                        :send rental confirmation email;
+            else ([payment fails])
+                           :Record payment failure;
+                           |Email Service|
+                           :send failed payment email;
+            endif
 else ([not available])
         :Show not available;
         |Renter|
@@ -37,22 +44,6 @@ else ([not available])
 
 
 
-|School Staff|
-:Check availability;
-
-|Payment Service|
-:Process Payment;
-
-if (Payment Successful?) then ([success])
-            :Save booking;
-
-
-else ([fail])
-               :Record payment failure;
-
-
-|Email Service|
-:Check availability;
 
 
 @enduml

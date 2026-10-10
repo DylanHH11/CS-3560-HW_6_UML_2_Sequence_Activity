@@ -1,22 +1,4 @@
 @startuml
-title School Facility Rental - Activity
-
-|Renter|
-start
-:Choose facility and date;
-
-|Website|
-:Check availability;
-if (available?) then (yes)
-  :Create request;
-else (no)
-  :Show not available;
-  stop
-endif
-
-... add the rest ...
-@enduml
-@startuml
 title School Facility Rental - Sequence
 
 actor Renter
