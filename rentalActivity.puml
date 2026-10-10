@@ -2,11 +2,11 @@
 
 |Renter|
 start
-:Selects facility, date, time, and event type;
+:Select facility, date, time, and event type;
 
 |Website|
 :Check availability;
-if (available?) then (yes)
+if (available?) then ([available])
        |Renter|
        :Enter contact information;
        :Submit request;
@@ -25,7 +25,7 @@ if (available?) then (yes)
                         |Renter|
                         :Booking confirmed;
                         stop
-                    else ([payment failed])
+                    else ([payment fails])
                         :Record payment failure;
                         |Email Service|
                         :Send failed payment email;
@@ -60,7 +60,7 @@ else ([not available])
             stop
         endif
 
-
+endif
 
 
 
