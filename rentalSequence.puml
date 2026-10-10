@@ -17,5 +17,8 @@ alt [approved]
 
 else [rejected]
     Staff --> Website: Reject request
+    Website -> Website: Record rejection
+    Website -> Email: Send rejection notice
+    Email --> Renter: Rejection email
 end
 @enduml
