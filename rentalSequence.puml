@@ -7,13 +7,15 @@ participant "School Staff" as Staff
 participant "Payment Service" as Pay
 participant "Email Service" as Email
 
-Renter -> Website: submit request
-Website -> Staff: send request for review
+Renter -> Website: Submit request
+Website -> Website: Check availability
+Website -> Staff: Send request for review
+Staff -> Staff: Review request
 
-alt approved
-  Staff --> Website: approved
-  ... add payment and confirmation ...
-else rejected
-  Staff --> Website: rejected
+alt [approved]
+    Staff --> Website: Approve request
+
+else [rejected]
+    Staff --> Website: Reject request
 end
 @enduml

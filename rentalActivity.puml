@@ -1,4 +1,5 @@
 @startuml
+title School Facility Rental - Activity
 
 |Renter|
 start
