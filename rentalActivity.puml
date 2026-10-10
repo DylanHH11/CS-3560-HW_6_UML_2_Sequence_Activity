@@ -17,16 +17,28 @@ if (available?) then (yes)
         if(Accept request?) then ([approved])
             |Payment Service|
             :Process Payment;
-            if (Payment Successful?) then ([payment succeeds])
+                    |Website|
+                    if (Payment successful?) then ([payment succeeds])
                         :Save booking;
                         |Email Service|
-                        :send rental confirmation email;
-            else ([payment fails])
-                           :Record payment failure;
-                           |Email Service|
-                           :send failed payment email;
-            endif
+                        :Send rental confirmation email;
+                        stop
+                    else ([payment fails])
+                        :Record payment failure;
+                        |Email Service|
+                        :Send failed payment email;
+                        stop
+                    endif
+                    else ([rejected])
+                        |Website|
+                        :Record rejection;
+                        |Email Service|
+                        :Send rejection email;
+                        stop
+                    endif
+
 else ([not available])
+        |Website|
         :Show not available;
         |Renter|
         if (Try another date?) then ([choose another date])
