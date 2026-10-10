@@ -14,7 +14,21 @@ Staff -> Staff: Review request
 
 alt [approved]
     Staff --> Website: Approve request
+    Website -> Pay: Process payment
 
+    alt [payment succeeds]
+        Pay --> Website: Payment successful
+        Website -> Website: Save booking
+        Website -> Email: Send confirmation
+        Email --> Renter: Confirmation email
+        Website --> Renter: Booking confirmed
+
+    else [payment fails]
+        Pay --> Website: Payment failed
+        Website -> Website: Record payment failure
+        Website -> Email: Send payment failure notice
+        Email --> Renter: Payment failure email
+    end
 else [rejected]
     Staff --> Website: Reject request
     Website -> Website: Record rejection
