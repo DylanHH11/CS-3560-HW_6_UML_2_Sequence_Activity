@@ -22,11 +22,15 @@ if (available?) then (yes)
                         :Save booking;
                         |Email Service|
                         :Send rental confirmation email;
+                        |Renter|
+                        :Booking confirmed;
                         stop
-                    else ([payment fails])
+                    else ([payment failed])
                         :Record payment failure;
                         |Email Service|
                         :Send failed payment email;
+                        |Renter|
+                        :Payment failed;
                         stop
                     endif
                     else ([rejected])
@@ -34,6 +38,8 @@ if (available?) then (yes)
                         :Record rejection;
                         |Email Service|
                         :Send rejection email;
+                        |Renter|
+                        :Request rejected;
                         stop
                     endif
 
