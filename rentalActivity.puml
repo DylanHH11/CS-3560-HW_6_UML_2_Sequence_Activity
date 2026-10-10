@@ -2,16 +2,44 @@
 
 |Renter|
 start
-:Choose facility and date;
+:Selects facility, date, time, and event type;
 
 |Website|
 :Check availability;
+
+if (Facility available?) then ([available])
+
+else ([unavailable])
+        :Show not available;
+        |Renter|
+        if (Try another date?) then ([choose another date])
+            :Choose another date/time;
+            |Website|
+            :Check availability again;
+            note right
+              A new facility selection should loop back to the beginning
+            end note
+            stop
+        else ([stop])
+            :Stop request;
+            stop
+        endif
+
+
 
 |School Staff|
 :Check availability;
 
 |Payment Service|
-:Check availability;
+:Process Payment;
+
+if (Payment Successful?) then ([success])
+            :Save booking;
+
+
+else ([fail])
+               :Record payment failure;
+
 
 |Email Service|
 :Check availability;
